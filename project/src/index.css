@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Custom hover transition */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 5px rgba(107,63,175,0.4); }
+  50% { box-shadow: 0 0 20px rgba(107,63,175,0.7); }
+}
+
+.hover-glow:hover {
+  animation: glow-pulse 2s infinite;
+}
+
+/* Button shine effect animation */
+@keyframes shine {
+  0% { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(300%) skewX(-15deg); }
+}
+
+.shine-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+  transform: skewX(-15deg);
+  animation: shine 3s infinite;
+}
+
+.btn-shine:hover::before {
+  animation: shine 1.5s;
+}
+
+@media (max-width: 768px) {
+  .feature-card-expanded {
+    max-height: 500px;
+  }
+  .feature-card-collapsed {
+    max-height: 120px;
+  }
+}
+
+/* Selected card highlighting effect */
+.roadmap-card.selected {
+  cursor: pointer;
+  z-index: 10;
+}
+
+.roadmap-card:not(.selected) {
+  cursor: pointer;
+}
+
+/* Target specifically Firefox for better scroll behavior */
+@-moz-document url-prefix() {
+  .smooth-scroll {
+    scroll-behavior: auto;
+  }
+}
+
+/* Momentum scrolling for supported browsers */
+.smooth-scroll {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: auto;
+}
+
+/* NeuroLabs Color Palette */
+:root {
+  --obsidian-black: #050509;
+  --deep-violet-1: #681296;
+  --deep-violet-2: #4e0c71;
+  --plasma-blue: #1ab7ff;
+  --electric-purple: #9b5de5;
+  --radiant-magenta: #ff2bd6;
+  --neon-green: #39ff14;
+  --muted-light-gray: #b3b3c5;
+}
+
+/* Deep purple gradient utilities */
+.bg-neuro-gradient {
+  background: linear-gradient(135deg, var(--deep-violet-1), var(--deep-violet-2), var(--electric-purple));
+}
+
+.hover\:scale-102:hover {
+  transform: scale(1.02);
+}
+
+/* Icon gradient styling */
+.icon-gradient {
+  background: linear-gradient(135deg, var(--deep-violet-1), var(--deep-violet-2), var(--electric-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Border image gradient */
+.border-image {
+  border-image: linear-gradient(135deg, var(--deep-violet-1), var(--deep-violet-2), var(--electric-purple)) 1;
+}
+
+/* SVG gradient fill */
+.svg-gradient-fill path,
+.svg-gradient-fill circle,
+.svg-gradient-fill rect {
+  fill: url(#neuroGradient);
+}
+
+.svg-gradient-stroke path,
+.svg-gradient-stroke circle,
+.svg-gradient-stroke rect {
+  stroke: url(#neuroGradient);
+}
